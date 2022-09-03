@@ -1,3 +1,25 @@
+<?php
+include('function.php');
+
+if(isset($_POST['insert'])){
+    if(!empty($_POST['nom']) && !empty($_POST['prenoms']) && !empty($_POST['contact']) && !empty($_POST['date_naissance']) && !empty($_POST['email']) && !empty($_POST['pseudo']) && !empty($_POST['password'])){
+        $nom = $_POST['nom'];
+        $prenoms = $_POST['prenoms'];
+        $contact =$_POST['contact'];
+        $date_naissance =$_POST['date_naissance'];
+        $email = $_POST['email'];
+        $pseudo = $_POST['pseudo'];
+        $password = $_POST['password'];
+        if(insertUser($nom,$prenoms,$contact,$date_naissance,$email,$pseudo,$password)){
+            die("ok");
+        }else{
+            die("no");
+        }
+        
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,78 +46,22 @@
 
         <div class="input">
         <input type="text" name="nom" class="form-control" placeholder="Pom" required="required" autocomplete="off"></br>
-        <input type="text" name="prenom" class="form-control" placeholder="Prenom" required="required" autocomplete="off"></br>
+        <input type="text" name="prenoms" class="form-control" placeholder="Prenom" required="required" autocomplete="off"></br>
 
-            <input type="email" name="pseudo" placeholder="Pseudo" required="required" autocomplete="off"></br>
-            <input type="email" name="date_naissance" placeholder="Date de naissance" required="required" autocomplete="off"></br>
+            <input type="text" name="pseudo" placeholder="Pseudo" required="required" autocomplete="off"></br>
+            <input type="date" name="date_naissance" placeholder="Date de naissance" required="required" autocomplete="off"></br>
             <input type="email" name="email" placeholder="email" required="required" autocomplete="off"></br>
+            <input type="text" name="contact" placeholder="contact" required="required" autocomplete="off"></br>
             <input type="password" name="password" id="Password" placeholder="Mot de passe" required = "required" autocomplete="off"></br>
-            <input type="password" name="password_retype" id="Password" class= "from-control" placeholder="Re-tapez le mot de pass" required="required" autocomplete="off"></br>
+            
             
             
            
         </div>
         <div align="center" class="conbtn">
             <button type="submit" class="btn-1"><a href="formulaire.php"> Aller à la Connexion </a></button>  
-            <button type="submit" class="btn-2" name="submit">Valider</button>
+            <button type="submit" name="insert" class="btn-2">Valider</button>
         </div></br>
-
-        <?php
-        if(isset($_GET['reg_err']))
-        {
-            $err = htmlspecialchars($_GET['reg_err']);
-
-            switch($err)
-            {
-                case 'success' :
-                    ?>
-                    <div class="alert-succes">
-                        <strong>Succès</strong> Inscription réuissie  !  <a href="connexion.php">  Se Connecter</a>
-                    </div>
-                    <?php
-                break;
-                case 'password' :
-                    ?>
-                    <div class="alert-password">
-                        <strong>Erreur</strong>Mot de passe différent
-                    </div>
-                    <?php
-                break;
-                case 'email' :
-                    ?>
-                    <div class="alert-email">
-                        <strong>Erreur</strong> email non valide 
-                    </div>
-                    <?php
-                break;
-                case 'email_length' :
-                    ?>
-                    <div class=" alert-email_length">
-                        <strong>Erreur</strong>email trop long
-                    </div>
-                    <?php
-                break;
-                case 'pseudo_length' :
-                    ?>
-                    <div class="alert-pseudo_length">
-                        <strong>Erreur</strong> Pseudo trop long
-                    </div>
-                    <?php
-                break;
-                case 'already' :
-                    ?>
-                    <div class="alert-already">
-                        <strong>Erreur</strong>Compte déjà existant
-                    </div>
-                    <?php
-                break;
-                    
-                    
-            }
-        }
-
-
-    ?>
     </form>
 </body>
 </html>
