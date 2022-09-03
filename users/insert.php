@@ -1,4 +1,5 @@
 <?php
+include('../api/api.php');
 if(isset($_POST['insert'])){
     if(!empty($_POST['nom']) && !empty($_POST['prenoms']) && !empty($_POST['contact']) && !empty($_POST['date_naissance']) && !empty($_POST['email']) && !empty($_POST['pseudo']) && !empty($_POST['password'])){
         $nom = str_replace(' ','_',$_POST['nom']);
@@ -8,13 +9,10 @@ if(isset($_POST['insert'])){
         $email =str_replace(' ','_',$_POST['email']);
         $pseudo =str_replace(' ','_',$_POST['pseudo']);
         $password = str_replace(' ','_',$_POST['password']);
-        $ok = file_get_contents("http://localhost/projetBattleNan/api/insert/".'/'.$nom.'/'.$prenoms.'/'.$contact.'/'.$date_naissance.'/'.$email.'/'.$pseudo.'/'.$password);
-        if($ok){
-            echo "<div class='alert alert-success'>Enregistrement Ok</div>";
+        if(insertUser($nom, $prenoms, $contact, $date_naissance, $email, $pseudo, $password)){
+            echo "ok";
         }
-        else{
-            echo "<div class='alert alert-danger'>Oops... veuillez retenter plus tard</div>";
-        }
+        
     }
 }
 
