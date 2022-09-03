@@ -1,3 +1,19 @@
+<?php
+include('function.php');
+$success = false;
+if(isset($_POST['connect'])){
+    if(!empty($_POST['email']) && !empty($_POST['password'])){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        if(userLogin($email,$password)){
+            die('ok');
+        }else{
+            $success = true;
+        }
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,51 +39,17 @@
         <p class="choose-email">ou utiliser mon adresse e-mail :</p>
 
         <div class="input">
-            <input type="text" name="email" placeholder="Email" required ="required" autocomplete="off"></br>
+            <input type="email" name="email" placeholder="Email" required ="required" autocomplete="off"></br>
             <input type="password" name="password" id="Password" placeholder="Mot de passe" required = "required" autocomplete="off">
         </div>
         <p class="oublier"><a href="#"> Mot de passe oublier</a></p>
         <p class="incription">Je n'ai pas de <span>compte</span>. Je m'en <span class="fa fa"> <a href="formulaire-inscription.php">  créé  </a> </span> un.</p>
         <div align ="center">
-            <button type="submit" name="submit">Se connecter</button>
+            <button type="submit" name="connect">Se connecter</button>
         </div></br>
-        <?php
-     
-       if(isset($_GET['login_err']))
-       {
-            $err = htmlspecialchars(($_GET['login_err']));
-
-            switch($err)
-            {
-                case 'password':
-                    ?>
-                    <div class="alert-danger">
-                        <strong>Erreur...</strong> mot de passe Incorect
-                    </div>
-                <?php
-                break;
-
-                case 'email':
-                    ?>
-                    <div class=" alert-danger">
-                        <strong>Erreur...</strong> Email incorrect
-                    </div>
-                <?php
-                break;
-
-                case 'already':
-                    ?>
-                    <div class="alert-danger">
-                        <strong>Erreur...</strong> Compte non existant
-                    </div>
-                <?php
-                break;
-
-                
-            }
-       }
-       ?>
-
+        <?php if($success):?>
+                <h3 style="color:red">Identifiant Incorrect</h3>
+            <?php endif;?>
     </form>
 </body>
 </html>

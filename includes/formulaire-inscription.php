@@ -1,6 +1,6 @@
 <?php
 include('function.php');
-
+$success = false;
 if(isset($_POST['insert'])){
     if(!empty($_POST['nom']) && !empty($_POST['prenoms']) && !empty($_POST['contact']) && !empty($_POST['date_naissance']) && !empty($_POST['email']) && !empty($_POST['pseudo']) && !empty($_POST['password'])){
         $nom = $_POST['nom'];
@@ -11,9 +11,7 @@ if(isset($_POST['insert'])){
         $pseudo = $_POST['pseudo'];
         $password = $_POST['password'];
         if(insertUser($nom,$prenoms,$contact,$date_naissance,$email,$pseudo,$password)){
-            die("ok");
-        }else{
-            die("no");
+            $success = true;
         }
         
     }
@@ -59,9 +57,12 @@ if(isset($_POST['insert'])){
            
         </div>
         <div align="center" class="conbtn">
-            <button type="submit" class="btn-1"><a href="formulaire.php"> Aller à la Connexion </a></button>  
+            <button class="btn-1"><a href="formulaire.php"> Aller à la Connexion </a></button>  
             <button type="submit" name="insert" class="btn-2">Valider</button>
         </div></br>
+        <?php if($success):?>
+        <h3 style="color:blue">Inscription réussie</h3>
+    <?php endif;?>
     </form>
 </body>
 </html>
