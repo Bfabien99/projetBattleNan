@@ -1,5 +1,6 @@
 <?php
 include('../api/api.php');
+<<<<<<< HEAD
 if(isset($_POST['insert'])){
     if(!empty($_POST['nom']) && !empty($_POST['prenoms']) && !empty($_POST['contact']) && !empty($_POST['date_naissance']) && !empty($_POST['email']) && !empty($_POST['pseudo']) && !empty($_POST['password'])){
         $nom = str_replace(' ','_',$_POST['nom']);
@@ -18,3 +19,5 @@ if(isset($_POST['update'])){
 
     }
 }
+=======
+>>>>>>> chris
