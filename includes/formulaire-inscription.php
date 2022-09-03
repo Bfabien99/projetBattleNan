@@ -45,7 +45,7 @@ if(isset($_POST['insert'])){
         <p class="choose-email">Remplissez les Champs :</p>
 
         <div class="input">
-        <input type="text" name="nom" class="form-control" placeholder="Pom" required="required" autocomplete="off"></br>
+        <input type="text" name="nom" class="form-control" placeholder="nom" required="required" autocomplete="off"></br>
         <input type="text" name="prenoms" class="form-control" placeholder="Prenom" required="required" autocomplete="off"></br>
 
             <input type="text" name="pseudo" placeholder="Pseudo" required="required" autocomplete="off"></br>

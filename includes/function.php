@@ -18,8 +18,9 @@ function getAllUsers()
 function insertUser($nom,$prenoms,$contact,$date_naissance,$email,$pseudo,$pass)
 {
     $pdo = getConnexion();
-    $query = $pdo->prepare("INSERT INTO users (nom,prenoms,contact,date_naissance,email,pseudo,password) VALUES(
-    :nom,:prenoms,:contact,:date_naissance,:email,:pseudo,:pass");
+    $req = "INSERT INTO users(nom,prenoms,contact,date_naissance,email,pseudo,password) VALUES(
+        :nom,:prenoms,:contact,:date_naissance,:email,:pseudo,:password)";
+    $query = $pdo->prepare($req);
     $insert = $query->execute([
         'nom' => $nom,
         'prenoms' => $prenoms,
@@ -27,7 +28,7 @@ function insertUser($nom,$prenoms,$contact,$date_naissance,$email,$pseudo,$pass)
         'date_naissance' => $date_naissance,
         'email' => $email,
         'pseudo' => $pseudo,
-        'pass' => $pass,
+        'password' => $pass
     ]);
     if ($insert) {
         return true;
