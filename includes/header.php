@@ -15,12 +15,12 @@
             <nav>
                 <div class="navbar">
                     <a href="">acceuil</a>
-                    <a href="">compagnie</a>
-                    <a href="">services</a>
+                    <a href="">financement</a>
+                    <a href="">demande de job</a>
                     <a href="">contact</a>
                 </div>
             </nav>
-            <div><a href=""class="fas fa-user" id="btn-conexion">conexion</a></div>
+            <div><a href="includes/formulaire.php"class="fas fa-user" id="btn-conexion">conexion</a></div>
     </header>
     <div class="sub-header">
             <div class="header-title">

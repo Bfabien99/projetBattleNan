@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    font-family: 'Roboto' , sans-serif;
+    background: url(../images/israel-palacio-ImcUkZ72oUs-unsplash.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+form{
+    margin-top: 110px;
+    background-color:rgb(255, 255, 255 );
+    opacity: 0.9;
+    padding: 100px 60px;
+    border-radius: 10px;
+    min-width: 400px;
+   
+    
+}
+form h1{
+    color: #eb73eb;
+    text-align: center;
+}
+form .social-media{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+form .social-media p{
+    padding: 20px;
+    margin-left: 15px;
+    border: 1px solid #54e;
+    border-radius: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+form p.choose-email{
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10px ;
+    text-align: center;
+}
+form input{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: row;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f2f2f2;
+    outline: none;
+    width: 260px;
+}
+form p.incription{
+    font-size: 14px;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    color: #878787;
+    text-align: center;
+}
+span{
+    color: red;
+}
+form p.incription span a{
+    text-decoration: none;
+    color: red;
+}
+form p.incription span a:hover{
+    color: #54e;
+}
+form button{
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: #eb73eb;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+}
+.alert-succes a{
+    text-decoration: none;
+}
+.alert-succes a:hover{
+    border-radius: 5px;
+    border: 1px solid #54e;
+    color: #eb73eb;
+}
+.alert-danger{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+form .oublier{
+    font-size: 0.8rem;
+}
+form .oublier a{
+    text-decoration: none;
+}
+
+form .conbtn{
+    display: flex;
+    justify-content: space-evenly;
+}
+form .btn-1{
+    border:none;
+    color: #fff;
+    background-color: #eb73eb;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 0 #54e;
+    transition: ease-out 0.3s;
+    outline: none;
+}
+form .btn-1 a{
+    text-decoration: none;
+    color: #fff;
+}
+form .btn-1:hover{
+    box-shadow: inset 300px 0 0 0 #54e;
+    cursor: pointer;
+    color: #000;
+}
+form .btn-2{
+    border: none;
+    color: #54e;
+    border-radius: 5px;
+    transition: ease-out 0.3s;
+    outline: none;
+    border: 3px solid #54e;
+    background-color: #f5f5f5;
+   
+}
+form .btn-2:hover{
+    color: #eb73eb;
+    cursor: pointer;
+}
+form .btn-2:before{
+    transition: 0.5s all ease;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    background-color: #54e;
+}
+form .btn-2:hover:before{
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+}
