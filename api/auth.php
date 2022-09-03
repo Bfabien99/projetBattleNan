@@ -32,9 +32,9 @@ if(!isset($token) || !preg_match('/Bearer\s(\S+)/', $token, $matches)){
 // On extrait le token
 $token = str_replace('Bearer ', '', $token);
 
-require_once 'includes/config.php';
-require_once 'classes/JWT.php';
+require_once 'jwt.php';
 
+const SECRET = 'xetoiuhefuyjehvf';
 $jwt = new JWT();
 
 // On vérifie la validité
