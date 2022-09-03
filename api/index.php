@@ -21,9 +21,13 @@ try
                     getAllUsers();
                 }
             break;
-
+            
             case 'insert':
-                echo json_encode($url[7]);
+                if(insertUser($url[1],$url[2],$url[3],$url[4],$url[5],$url[6],$url[7])){
+                    return true;
+                }else{
+                    return false;
+                }
             break;
 
             default:  throw new Exception("La demande n'est pas valide, vérifiez l'url");

@@ -9,10 +9,7 @@ if(isset($_POST['insert'])){
         $email =str_replace(' ','_',$_POST['email']);
         $pseudo =str_replace(' ','_',$_POST['pseudo']);
         $password = str_replace(' ','_',$_POST['password']);
-        if(insertUser($nom, $prenoms, $contact, $date_naissance, $email, $pseudo, $password)){
-            echo "ok";
-        }
-        
+        $insert = file_get_contents("http://localhost/projetBattleNan/api/insert/$nom/$prenoms/$contact/$date_naissance/$email/$pseudo/$password");
     }
 }
 
