@@ -1,4 +1,5 @@
 <?php
+session_start();
 define("URL", str_replace("index.php","",(isset($_SERVER['HTTPS'])? "https" : "http")."://".$_SERVER['HTTP_HOST'].$_SERVER["PHP_SELF"]));
 
 function getConnexion()
@@ -52,8 +53,9 @@ function userLogin($email, $pass){
 
     $stmt = $pdo->prepare($req);
     $stmt->execute();
-    $users = $stmt->fetch(PDO::FETCH_ASSOC);
-    return sendJson($users);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['userEmail'] = $user['email'];
+    return sendJson($user);
 }
 
 //Table finance

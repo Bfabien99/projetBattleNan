@@ -15,6 +15,6 @@ if(isset($_POST['insert'])){
 
 if(isset($_POST['update'])){
     if(!empty($_POST['id']) && !empty($_POST['prenoms']) && !empty($_POST['contact']) && !empty($_POST['date_naissance']) && !empty($_POST['email']) && !empty($_POST['pseudo']) && !empty($_POST['password'])){
-        
+
     }
 }
