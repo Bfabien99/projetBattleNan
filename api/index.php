@@ -1,7 +1,9 @@
 <?php
 require_once("./api.php");
-#localhost/maisons
-#localhost/maisons/:type(vendre,location)
+#localhost/projetBattleNan/api/users =>  all user GET
+#localhost/projetBattleNan/api/users => insert user POST
+#localhost/projetBattleNan/api/users/:id =>  user by id GET
+#localhost/projetBattleNan/api/users/:id => POST UPDATE
 
 try
 {

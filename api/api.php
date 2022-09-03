@@ -7,6 +7,10 @@ function getConnexion()
     return new PDO("mysql:host=localhost;dbname=clando;charset=utf8","root","");
 }
 
+function escapeString($data){
+    return $data;
+}
+
 function sendJSON($infos)
 {   
     header("Access-Control-Allow-Origin: *");

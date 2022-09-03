@@ -1,23 +1,3 @@
-<?php
-include('function.php');
-$success = false;
-if(isset($_POST['insert'])){
-    if(!empty($_POST['nom']) && !empty($_POST['prenoms']) && !empty($_POST['contact']) && !empty($_POST['date_naissance']) && !empty($_POST['email']) && !empty($_POST['pseudo']) && !empty($_POST['password'])){
-        $nom = $_POST['nom'];
-        $prenoms = $_POST['prenoms'];
-        $contact =$_POST['contact'];
-        $date_naissance =$_POST['date_naissance'];
-        $email = $_POST['email'];
-        $pseudo = $_POST['pseudo'];
-        $password = $_POST['password'];
-        if(insertUser($nom,$prenoms,$contact,$date_naissance,$email,$pseudo,$password)){
-            $success = true;
-        }
-        
-    }
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +10,7 @@ if(isset($_POST['insert'])){
 </head>
 <body>
   
-    <form action = "" method="post"> 
+    <form action ="" id="newForm" method="post"> 
         <h1> Inscriptions</h1>
         <div class="social-media">
 
@@ -43,14 +23,14 @@ if(isset($_POST['insert'])){
         <p class="choose-email">Remplissez les Champs :</p>
 
         <div class="input">
-        <input type="text" name="nom" class="form-control" placeholder="nom" required="required" autocomplete="off"></br>
-        <input type="text" name="prenoms" class="form-control" placeholder="Prenom" required="required" autocomplete="off"></br>
+        <input type="text" id="nom" name="nom" class="form-control" placeholder="nom" required="required" autocomplete="off"></br>
+        <input type="text" id="prenoms" name="prenoms" class="form-control" placeholder="Prenom" required="required" autocomplete="off"></br>
 
-            <input type="text" name="pseudo" placeholder="Pseudo" required="required" autocomplete="off"></br>
-            <input type="date" name="date_naissance" placeholder="Date de naissance" required="required" autocomplete="off"></br>
-            <input type="email" name="email" placeholder="email" required="required" autocomplete="off"></br>
-            <input type="text" name="contact" placeholder="contact" required="required" autocomplete="off"></br>
-            <input type="password" name="password" id="Password" placeholder="Mot de passe" required = "required" autocomplete="off"></br>
+            <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required="required" autocomplete="off"></br>
+            <input type="date" id="date_naissance" name="date_naissance" placeholder="Date de naissance" required="required" autocomplete="off"></br>
+            <input type="email" id="email" name="email" placeholder="email" required="required" autocomplete="off"></br>
+            <input type="text" id="contact" name="contact" placeholder="contact" required="required" autocomplete="off"></br>
+            <input type="password" id="password" name="password" id="Password" placeholder="Mot de passe" required = "required" autocomplete="off"></br>
             
             
             
@@ -60,9 +40,47 @@ if(isset($_POST['insert'])){
             <button class="btn-1"><a href="formulaire.php"> Aller à la Connexion </a></button>  
             <button type="submit" name="insert" class="btn-2">Valider</button>
         </div></br>
-        <?php if($success):?>
-        <h3 style="color:blue">Inscription réussie</h3>
-    <?php endif;?>
+        <div id="msg">
+
+        </div>
     </form>
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+
+        $('#newForm').on('submit', function(e) {
+            e.preventDefault();
+            var nom = $('#nom').val();
+            var prenoms = $('#prenoms').val();
+            var contact = $('#contact').val();
+            var date_naissance = $('#date_naissance').val();
+            var email = $('#email').val();
+            var pseudo = $('#pseudo').val();
+            var password = $('#password').val();
+
+            $.ajax({
+                url: 'insert.php',
+                type: 'POST',
+                data: {
+                    insert: true,
+                    nom: nom,
+                    prenoms: prenoms,
+                    contact: contact,
+                    date_naissance: date_naissance,
+                    email: email,
+                    pseudo: pseudo,
+                    password: password
+                },
+                success: function(data) {
+                    if (data) {
+                        $('#msg').html(data);
+                    }
+                }
+            });
+
+        });
+
+    });
+</script>

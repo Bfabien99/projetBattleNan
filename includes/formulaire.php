@@ -1,5 +1,4 @@
 <?php
-include('function.php');
 $success = false;
 if(isset($_POST['connect'])){
     if(!empty($_POST['email']) && !empty($_POST['password'])){
