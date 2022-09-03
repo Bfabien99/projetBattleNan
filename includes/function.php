@@ -48,8 +48,23 @@ function userLogin($email, $pass){
 }
 
 //Table finance
-function postFinance()
+function postFinance($userId,$domaine,$description,$somme)
 {
+    $pdo = getConnexion();
+    $req = "INSERT INTO finance(userId,domaine,description,somme) VALUES(
+        :userId,:domaine,:description,:somme)";
+    $query = $pdo->prepare($req);
+    $insert = $query->execute([
+        'userId' => $userId,
+        'domaine' => $domaine,
+        'description' => $description,
+        'somme' => $somme,
+    ]);
+    if ($insert) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 //Table job
